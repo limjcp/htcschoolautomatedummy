@@ -10,12 +10,12 @@ export default async function Page() {
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Students</h1>
 
-      <a
+      {/* <a
         href="/student-register"
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block"
       >
         Register Student
-      </a>
+      </a> */}
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr className="bg-gray-100 border-b">
