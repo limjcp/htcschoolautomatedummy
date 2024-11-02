@@ -1,7 +1,11 @@
 import prisma from "@/lib/prisma";
 
 export default async function Page() {
-  const students = await prisma.student.findMany();
+  const students = await prisma.student.findMany({
+    include: {
+      enrollmentYear: true,
+    },
+  });
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Students</h1>
@@ -23,7 +27,7 @@ export default async function Page() {
             <th className="py-2 px-4 border-r">Birth Date</th>
 
             <th className="py-2 px-4 border-r">Program</th>
-            <th className="py-2 px-4 border-r">Year</th>
+            <th className="py-2 px-4 border-r">Enrollment Year</th>
             <th className="py-2 px-4 border-r">Email</th>
             <th className="py-2 px-4 border-r">Phone</th>
             <th className="py-2 px-4 border-r">Enrolled</th>
@@ -44,7 +48,9 @@ export default async function Page() {
               </td>
 
               <td className="py-2 px-4 border-r">{student.program}</td>
-              <td className="py-2 px-4 border-r">{student.yearLevel}</td>
+              <td className="py-2 px-4 border-r">
+                {student.enrollmentYear.year}
+              </td>
               <td className="py-2 px-4 border-r">{student.email}</td>
               <td className="py-2 px-4 border-r">{student.phone}</td>
               <td className="py-2 px-4 border-r">
